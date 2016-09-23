@@ -1,0 +1,3 @@
+administer personas:
+  title: Administer personas
+  restrict access: true

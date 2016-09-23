@@ -1,0 +1,6 @@
+#entity.persona.add_form:
+persona.add:
+  route_name: 'persona.add'
+  title: 'Add Persona'
+  appears_on:
+    - entity.persona.collection

@@ -81,6 +81,28 @@ function personas_form_user_form_alter(&$form, FormStateInterface $form_state) {
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_update().
+ *
+ * Adds and removes user roles for all users with the updated persona.
+ */
+function personas_persona_update(EntityInterface $persona) {
+  $current_roles = $persona->getRoles();
+  $original_roles = $persona->original->getRoles();
+
+  $skip_roles = [RoleInterface::ANONYMOUS_ID, RoleInterface::AUTHENTICATED_ID];
+  $add_roles = array_diff($current_roles, $original_roles, $skip_roles);
+  $remove_roles = array_diff($original_roles, $current_roles, $skip_roles);
+
+  // If there are no roles to update, return and do nothing.
+  if (empty($add_roles) && empty($remove_roles)) {
+    return;
+  }
+
+  $batch_processor = Drupal::getContainer()->get('personas.batch_processor');
+  $batch_processor->process($persona);
+}
+
+/**
  * Implements hook_ENTITY_TYPE_presave().
  *
  * Updates the user roles to save for a user based on the user's persona(s).

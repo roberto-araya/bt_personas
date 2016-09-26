@@ -1,7 +1,0 @@
-# Persona menu items definition
-#entity.persona.collection:
-#  title: 'Persona'
-#  route_name: entity.persona.collection
-#  description: 'List Personas'
-#  parent: entity.user.collection
-#  weight: 99

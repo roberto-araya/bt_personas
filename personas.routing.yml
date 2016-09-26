@@ -23,7 +23,7 @@ entity.persona.edit_form:
     _entity_access: persona.update
 
 entity.persona.delete_form:
-  path: '/admin/people/roles/manage/{persona}/delete'
+  path: '/admin/people/personas/manage/{persona}/delete'
   defaults:
     _entity_form: persona.delete
     _title: 'Delete Persona'

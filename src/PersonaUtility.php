@@ -43,7 +43,7 @@ class PersonaUtility implements PersonaUtilityInterface {
    * @return string[]
    *   The list of persona IDs.
    */
-  protected static function personaNames($personas) {
+  public static function personaNames($personas) {
     return array_map(function ($persona) {
       return $persona->id();
     }, $personas);

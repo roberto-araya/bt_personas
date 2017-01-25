@@ -50,9 +50,13 @@ class Processor {
     $this->persona = $persona;
     $batch = $this->getBatch();
     batch_set($batch);
-    $redirect = batch_process(Url::fromRoute('entity.persona.collection'));
-    if ($redirect) {
-      $redirect->send();
+    if (function_exists('drush_backend_batch_process')) {
+      drush_backend_batch_process();
+    } else {
+      $redirect = batch_process(Url::fromRoute('entity.persona.collection'));
+      if ($redirect) {
+        $redirect->send();
+      }
     }
   }
 

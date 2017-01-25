@@ -18,10 +18,13 @@ class PersonaAccessControlHandler extends EntityAccessControlHandler {
    * {@inheritdoc}
    */
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
-    switch ($operation) {
-      default:
-        return parent::checkAccess($entity, $operation, $account);
+    if ($operation == 'view' && $account->hasPermission('view user personas')) {
+      $access = AccessResult::allowed();
     }
+    else {
+      $access = parent::checkAccess($entity, $operation, $account);
+    }
+    return $access;
   }
 
 }

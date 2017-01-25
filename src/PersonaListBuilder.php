@@ -24,8 +24,7 @@ class PersonaListBuilder extends ConfigEntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     $row['label'] = $entity->label();
-    //$row['id'] = $entity->id();
-    //// You probably want a few more properties here...
+    $row['id'] = $entity->id();
     return $row + parent::buildRow($entity);
   }
 

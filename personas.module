@@ -46,7 +46,8 @@ function personas_entity_base_field_info(EntityTypeInterface $entity_type) {
     ->setLabel(t('Personas'))
     ->setCardinality(BaseFieldDefinition::CARDINALITY_UNLIMITED)
     ->setDescription(t('The personas the user has.'))
-    ->setSetting('target_type', 'persona');
+    ->setSetting('target_type', 'persona')
+    ->setDisplayConfigurable('view', TRUE);
 
   return $fields;
 }
@@ -135,17 +136,14 @@ function personas_user_presave(EntityInterface $user) {
  *
  * @param string $entity_type
  *   The entity type id of the given entity.
- *
  * @param \Drupal\user\UserInterface $user
  *   The user entity on which to attach form values.
- *
  * @param array $form
  *   The current form array.
- *
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  *   The current form state.
  */
-function personas_user_builder($entity_type, UserInterface $user, &$form, FormStateInterface $form_state) {
+function personas_user_builder($entity_type, UserInterface $user, array &$form, FormStateInterface $form_state) {
   $value = array_values(array_filter($form_state->getValue('personas')));
   $user->set('personas', $value);
 }
@@ -160,7 +158,7 @@ function personas_user_builder($entity_type, UserInterface $user, &$form, FormSt
  * @return \Drupal\personas\PersonaInterface[]
  *   A list of personas matching the filter criteria.
  */
-function personas_get($filter_roles = []) {
+function personas_get(array $filter_roles = []) {
   $personas = Persona::loadMultiple();
 
   if (!empty($filter_roles)) {
@@ -184,7 +182,7 @@ function personas_get($filter_roles = []) {
  *   An associative array of persona names matching the filter criteria, keyed
  *   by its persona type id.
  */
-function personas_get_names($filter_roles = []) {
+function personas_get_names(array $filter_roles = []) {
   return array_map(function ($persona) {
     return $persona->label();
   }, personas_get($filter_roles));

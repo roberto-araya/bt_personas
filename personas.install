@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements hook_uninstall().
+ * Implements hook_install().
  */
 function personas_install() {
   list(

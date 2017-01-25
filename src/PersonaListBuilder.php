@@ -15,7 +15,6 @@ class PersonaListBuilder extends ConfigEntityListBuilder {
    */
   public function buildHeader() {
     $header['label'] = $this->t('Persona');
-    //$header['id'] = $this->t('Machine name');
     return $header + parent::buildHeader();
   }
 
@@ -24,7 +23,6 @@ class PersonaListBuilder extends ConfigEntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     $row['label'] = $entity->label();
-    $row['id'] = $entity->id();
     return $row + parent::buildRow($entity);
   }
 

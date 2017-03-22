@@ -79,9 +79,14 @@ class UserPersona extends ConditionPluginBase {
       return TRUE;
     }
     $user = $this->getContextValue('user');
-    $wanted = $this->configuration['personas'];
+
+    $wanted = array_keys($this->configuration['personas']);
     $have = PersonaUtility::personaNames(PersonaUtility::fromUser($user));
-    return (bool) array_intersect($wanted, $have);
+    $intersection = array_intersect($wanted, $have);
+
+    $has_required_personas = count($intersection) > 0;
+
+    return $has_required_personas;
   }
 
 }

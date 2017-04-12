@@ -73,7 +73,7 @@ function personas_form_user_form_alter(&$form, FormStateInterface $form_state) {
     '#title' => t('Personas'),
     '#default_value' => $current,
     '#options' => $personas,
-    '#access' => !empty($personas) && $user->hasPermission('administer personas'),
+    '#access' => !empty($personas) && $user->hasPermission('assign personas'),
   ];
 
   $form['account']['roles']['#access'] = FALSE;

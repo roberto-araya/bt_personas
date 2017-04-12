@@ -68,13 +68,13 @@ function personas_form_user_form_alter(&$form, FormStateInterface $form_state) {
     $current = array_column($current, 'target_id');
   }
 
-  $form['account']['personas'] = array(
+  $form['account']['personas'] = [
     '#type' => 'checkboxes',
     '#title' => t('Personas'),
     '#default_value' => $current,
     '#options' => $personas,
     '#access' => !empty($personas) && $user->hasPermission('administer personas'),
-  );
+  ];
 
   $form['account']['roles']['#access'] = FALSE;
 

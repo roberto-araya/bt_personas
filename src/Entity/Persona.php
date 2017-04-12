@@ -59,7 +59,7 @@ class Persona extends ConfigEntityBase implements PersonaInterface {
    *
    * @var array
    */
-  protected $roles = array();
+  protected $roles = [];
 
   /**
    * {@inheritdoc}
@@ -89,7 +89,7 @@ class Persona extends ConfigEntityBase implements PersonaInterface {
    * {@inheritdoc}
    */
   public function removeRole($role) {
-    $this->roles = array_diff($this->roles, array($role));
+    $this->roles = array_diff($this->roles, [$role]);
     return $this;
   }
 

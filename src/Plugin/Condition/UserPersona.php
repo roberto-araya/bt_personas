@@ -24,13 +24,13 @@ class UserPersona extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form['personas'] = array(
+    $form['personas'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('When the user has the following personas'),
       '#default_value' => $this->configuration['personas'],
       '#options' => array_map('\Drupal\Component\Utility\Html::escape', personas_get_names()),
       '#description' => $this->t('If you select no personas, the condition will evaluate to TRUE for all users.'),
-    );
+    ];
     return parent::buildConfigurationForm($form, $form_state);
   }
 
@@ -38,9 +38,9 @@ class UserPersona extends ConditionPluginBase {
    * {@inheritdoc}
    */
   public function defaultConfiguration() {
-    return array(
-      'personas' => array(),
-    ) + parent::defaultConfiguration();
+    return [
+      'personas' => [],
+    ] + parent::defaultConfiguration();
   }
 
   /**
@@ -64,10 +64,10 @@ class UserPersona extends ConditionPluginBase {
       $personas = reset($personas);
     }
     if (!empty($this->configuration['negate'])) {
-      return $this->t('The user is not a member of @personas', array('@personas' => $personas));
+      return $this->t('The user is not a member of @personas', ['@personas' => $personas]);
     }
     else {
-      return $this->t('The user is a member of @personas', array('@personas' => $personas));
+      return $this->t('The user is a member of @personas', ['@personas' => $personas]);
     }
   }
 

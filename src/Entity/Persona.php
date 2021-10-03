@@ -4,6 +4,7 @@ namespace Drupal\personas\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;
 use Drupal\personas\PersonaInterface;
+use Drupal\user\Entity\Role;
 
 /**
  * Defines the Persona entity.
@@ -90,6 +91,21 @@ class Persona extends ConfigEntityBase implements PersonaInterface {
    */
   public function removeRole($role) {
     $this->roles = array_diff($this->roles, [$role]);
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function calculateDependencies() {
+    parent::calculateDependencies();
+    $roles = $this->getRoles();
+    foreach ($roles as $role) {
+      $role = Role::load($role);
+      if ($role instanceof Role) {
+        $this->addDependency('config', $role->getConfigDependencyName());
+      }
+    }
     return $this;
   }
 

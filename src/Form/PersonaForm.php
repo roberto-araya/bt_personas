@@ -57,10 +57,12 @@ class PersonaForm extends EntityForm {
     $persona = $this->entity;
     $status = $persona->save();
 
-    $edit_link = $this->entity->link($this->t('Edit'));
+    // TODO: Drupal Rector Notice: Please delete the following comment after you've made any necessary changes.
+    // Please confirm that `$entity` is an instance of `\Drupal\Core\Entity\EntityInterface`. Only the method name and not the class name was checked for this replacement, so this may be a false positive.
+    $edit_link = $this->entity->toLink($this->t('Edit'))->toString();
     switch ($status) {
       case SAVED_NEW:
-        drupal_set_message($this->t('Created the %label Persona.', [
+        $this->messenger()->addStatus($this->t('Created the %label Persona.', [
           '%label' => $persona->label(),
         ]));
         $this->logger('persona')->notice('Persona %label has been updated.', [
@@ -69,14 +71,16 @@ class PersonaForm extends EntityForm {
         break;
 
       default:
-        drupal_set_message($this->t('Saved the %label Persona.', [
+        $this->messenger()->addStatus($this->t('Saved the %label Persona.', [
           '%label' => $persona->label(),
         ]));
         $this->logger('persona')->notice('Persona %label has been added.', [
           '%label' => $persona->label(), 'link' => $edit_link,
         ]);
     }
-    $form_state->setRedirectUrl($persona->urlInfo('collection'));
+    // TODO: Drupal Rector Notice: Please delete the following comment after you've made any necessary changes.
+    // Please confirm that `$persona` is an instance of `Drupal\Core\Entity\EntityInterface`. Only the method name and not the class name was checked for this replacement, so this may be a false positive.
+    $form_state->setRedirectUrl($persona->toUrl('collection'));
   }
 
   protected function getRoleOptions() {

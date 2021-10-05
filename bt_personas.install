@@ -3,7 +3,7 @@
 /**
  * Implements hook_install().
  */
-function personas_install() {
+function bt_personas_install() {
   list(
     $entity_field_manager,
     $field_storage_definition_listener

@@ -1,4 +1,4 @@
-personas.persona.*:
+bt_personas.persona.*:
   type: config_entity
   label: 'Persona configuration'
   mapping:

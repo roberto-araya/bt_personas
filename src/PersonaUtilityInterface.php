@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\personas;
+namespace Drupal\bt_personas;
 
 use Drupal\user\UserInterface;
 
@@ -12,7 +12,7 @@ interface PersonaUtilityInterface {
    * @param \Drupal\user\UserInterface $user
    *   The user from which to extract personas.
    *
-   * @return \Drupal\personas\PersonaInterface[]
+   * @return \Drupal\bt_personas\PersonaInterface[]
    *   The extracted personas.
    */
   public static function fromUser(UserInterface $user);

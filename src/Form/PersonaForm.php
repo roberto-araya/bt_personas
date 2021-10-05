@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\personas\Form;
+namespace Drupal\bt_personas\Form;
 
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
@@ -9,7 +9,7 @@ use Drupal\user\RoleInterface;
 /**
  * Class PersonaForm.
  *
- * @package Drupal\personas\Form
+ * @package Drupal\bt_personas\Form
  */
 class PersonaForm extends EntityForm {
 
@@ -37,7 +37,7 @@ class PersonaForm extends EntityForm {
       '#disabled' => !$persona->isNew(),
       '#default_value' => $persona->id(),
       '#machine_name' => [
-        'exists' => '\Drupal\personas\Entity\Persona::load',
+        'exists' => '\Drupal\bt_personas\Entity\Persona::load',
       ],
     ];
 

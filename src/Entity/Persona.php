@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\personas\Entity;
+namespace Drupal\bt_personas\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;
-use Drupal\personas\PersonaInterface;
+use Drupal\bt_personas\PersonaInterface;
 use Drupal\user\Entity\Role;
 
 /**
@@ -13,11 +13,11 @@ use Drupal\user\Entity\Role;
  *   id = "persona",
  *   label = @Translation("Persona"),
  *   handlers = {
- *     "access" = "Drupal\personas\PersonaAccessControlHandler",
- *     "list_builder" = "Drupal\personas\PersonaListBuilder",
+ *     "access" = "Drupal\bt_personas\PersonaAccessControlHandler",
+ *     "list_builder" = "Drupal\bt_personas\PersonaListBuilder",
  *     "form" = {
- *       "default" = "Drupal\personas\Form\PersonaForm",
- *       "delete" = "Drupal\personas\Form\PersonaDeleteForm"
+ *       "default" = "Drupal\bt_personas\Form\PersonaForm",
+ *       "delete" = "Drupal\bt_personas\Form\PersonaDeleteForm"
  *     },
  *   },
  *   config_prefix = "persona",

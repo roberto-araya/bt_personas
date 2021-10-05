@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\personas\Plugin\Condition;
+namespace Drupal\bt_personas\Plugin\Condition;
 
 use Drupal\Core\Condition\ConditionPluginBase;
 use Drupal\Core\Form\FormStateInterface;
 
-use Drupal\personas\PersonaUtility;
+use Drupal\bt_personas\PersonaUtility;
 
 /**
  * Provides a 'Persona' condition.

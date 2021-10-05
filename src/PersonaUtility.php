@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\personas;
+namespace Drupal\bt_personas;
 
 use Drupal\user\UserInterface;
-use Drupal\personas\PersonaUtilityInterface;
+use Drupal\bt_personas\PersonaUtilityInterface;
 
 class PersonaUtility implements PersonaUtilityInterface {
 
@@ -19,7 +19,7 @@ class PersonaUtility implements PersonaUtilityInterface {
    */
   public static function rolesFromUserPersonas(UserInterface $user) {
     $personas = PersonaUtility::fromUser($user);
-    /* @var \Drupal\personas\PersonaInterface[] $personas */
+    /* @var \Drupal\bt_personas\PersonaInterface[] $personas */
     return array_values(array_reduce($personas, function ($roles, $persona) {
       $roles = array_merge($roles, $persona->getRoles());
       return $roles;
@@ -37,7 +37,7 @@ class PersonaUtility implements PersonaUtilityInterface {
   /**
    * Returns a list of persona ids from a list of persona entities.
    *
-   * @param \Drupal\personas\PersonaInterface[] $personas
+   * @param \Drupal\bt_personas\PersonaInterface[] $personas
    *   The list of personas from which to get IDs.
    *
    * @return string[]

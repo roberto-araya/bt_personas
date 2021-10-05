@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\personas;
+namespace Drupal\bt_personas;
 
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
 use Drupal\Core\Entity\EntityInterface;

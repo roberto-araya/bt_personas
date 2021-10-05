@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\personas\Batch;
+namespace Drupal\bt_personas\Batch;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Url;
 
-use Drupal\personas\PersonaInterface;
+use Drupal\bt_personas\PersonaInterface;
 
 class Processor {
 
@@ -26,7 +26,7 @@ class Processor {
   /**
    * The persona that was updated and triggering this batch process.
    *
-   * @var \Drupal\personas\PersonaInterface;
+   * @var \Drupal\bt_personas\PersonaInterface;
    */
   protected $persona;
 

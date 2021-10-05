@@ -12,13 +12,13 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\UserInterface;
 use Drupal\user\RoleInterface;
-use Drupal\personas\Entity\Persona;
-use Drupal\personas\PersonaUtility;
+use Drupal\bt_personas\Entity\Persona;
+use Drupal\bt_personas\PersonaUtility;
 
 /**
  * Implements hook_help().
  */
-function personas_help($route_name, RouteMatchInterface $route_match) {
+function bt_personas_help($route_name, RouteMatchInterface $route_match) {
   switch ($route_name) {
     // Main module help for the personas module.
     case 'help.page.personas':
@@ -36,7 +36,7 @@ function personas_help($route_name, RouteMatchInterface $route_match) {
  *
  * Attaches a field to the user entity on which to store personas.
  */
-function personas_entity_base_field_info(EntityTypeInterface $entity_type) {
+function bt_personas_entity_base_field_info(EntityTypeInterface $entity_type) {
   if ($entity_type->id() != 'user') {
     return;
   }
@@ -58,11 +58,11 @@ function personas_entity_base_field_info(EntityTypeInterface $entity_type) {
  * Adds a form element for saving user personas and disables access to the roles
  * element.
  */
-function personas_form_user_form_alter(&$form, FormStateInterface $form_state) {
+function bt_personas_form_user_form_alter(&$form, FormStateInterface $form_state) {
   $user = Drupal::currentUser();
   $account = $form_state->getFormObject()->getEntity();
 
-  $personas = personas_get_names();
+  $personas = bt_personas_get_names();
   $current = $account->get('personas')->getValue();
   if (!empty($current)) {
     $current = array_column($current, 'target_id');
@@ -86,7 +86,7 @@ function personas_form_user_form_alter(&$form, FormStateInterface $form_state) {
  *
  * Adds and removes user roles for all users with the updated persona.
  */
-function personas_persona_update(EntityInterface $persona) {
+function bt_personas_persona_update(EntityInterface $persona) {
   $current_roles = $persona->getRoles();
   $original_roles = $persona->original->getRoles();
 
@@ -108,7 +108,7 @@ function personas_persona_update(EntityInterface $persona) {
  *
  * Updates the user roles to save for a user based on the user's persona(s).
  */
-function personas_user_presave(EntityInterface $user) {
+function bt_personas_user_presave(EntityInterface $user) {
   // Gets a list of roles from the set personas.
   $persona_roles = PersonaUtility::rolesFromUserPersonas($user);
   // Gets a list of roles currently on the user.
@@ -143,7 +143,7 @@ function personas_user_presave(EntityInterface $user) {
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  *   The current form state.
  */
-function personas_user_builder($entity_type, UserInterface $user, array &$form, FormStateInterface $form_state) {
+function bt_personas_user_builder($entity_type, UserInterface $user, array &$form, FormStateInterface $form_state) {
   $value = array_values(array_filter($form_state->getValue('personas')));
   $user->set('personas', $value);
 }
@@ -158,7 +158,7 @@ function personas_user_builder($entity_type, UserInterface $user, array &$form, 
  * @return \Drupal\personas\PersonaInterface[]
  *   A list of personas matching the filter criteria.
  */
-function personas_get(array $filter_roles = []) {
+function bt_personas_get(array $filter_roles = []) {
   $personas = Persona::loadMultiple();
 
   if (!empty($filter_roles)) {
@@ -182,8 +182,8 @@ function personas_get(array $filter_roles = []) {
  *   An associative array of persona names matching the filter criteria, keyed
  *   by its persona type id.
  */
-function personas_get_names(array $filter_roles = []) {
+function bt_personas_get_names(array $filter_roles = []) {
   return array_map(function ($persona) {
     return $persona->label();
-  }, personas_get($filter_roles));
+  }, bt_personas_get($filter_roles));
 }

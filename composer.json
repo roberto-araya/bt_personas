@@ -1,12 +1,12 @@
 {
-  "name": "roberto-araya/personas",
+  "name": "drupal/bt_personas",
   "type": "drupal-module",
   "description": "",
   "keywords": ["Drupal"],
   "homepage": "https://www.drupal.org/project/personas",
   "license": "GPL-2.0-or-later",
   "support": {
-    "issues": "https://www.drupal.org/project/issues/personas",
-    "source": "http://git.drupal.org/project/personas.git"
+    "issues": "https://www.drupal.org/project/issues/bt_personas",
+    "source": "http://git.drupal.org/project/bt_personas.git"
   }
 }  

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\personas;
+namespace Drupal\bt_personas;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityAccessControlHandler;
@@ -10,7 +10,7 @@ use Drupal\Core\Session\AccountInterface;
 /**
  * Defines the access control handler for the persona entity type.
  *
- * @see \Drupal\persona\Entity\Persona
+ * @see \Drupal\bt_persona\Entity\Persona
  */
 class PersonaAccessControlHandler extends EntityAccessControlHandler {
 

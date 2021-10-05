@@ -1,0 +1,4 @@
+services:
+  bt_personas.batch_processor:
+    class: Drupal\bt_personas\Batch\Processor
+    arguments: ['@entity_type.manager']

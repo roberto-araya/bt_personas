@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Install functions for bt_personas.
+ */
+
+/**
  * Implements hook_install().
  */
 function bt_personas_install() {

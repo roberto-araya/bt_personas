@@ -4,4 +4,4 @@ description: Personas provides an abstraction on top of Drupal's role system. It
 core_version_requirement: ^8 || ^9
 package: User Management
 dependencies:
-  - user
+  - drupal:user

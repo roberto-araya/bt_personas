@@ -38,12 +38,15 @@ class PersonaDeleteForm extends EntityConfirmFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->entity->delete();
 
-    $this->messenger()->addStatus($this->t('content @type: deleted @label.',
-      [
-        '@type' => $this->entity->bundle(),
-        '@label' => $this->entity->label(),
-      ]
-      ));
+    $this->messenger()->addStatus(
+          $this->t(
+              'content @type: deleted @label.',
+              [
+                '@type' => $this->entity->bundle(),
+                '@label' => $this->entity->label(),
+              ]
+          )
+      );
 
     $form_state->setRedirectUrl($this->getCancelUrl());
   }

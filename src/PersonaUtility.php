@@ -3,8 +3,10 @@
 namespace Drupal\bt_personas;
 
 use Drupal\user\UserInterface;
-use Drupal\bt_personas\PersonaUtilityInterface;
 
+/**
+ * Utility class for Persona entity.
+ */
 class PersonaUtility implements PersonaUtilityInterface {
 
   /**
@@ -19,11 +21,15 @@ class PersonaUtility implements PersonaUtilityInterface {
    */
   public static function rolesFromUserPersonas(UserInterface $user) {
     $personas = PersonaUtility::fromUser($user);
-    /* @var \Drupal\bt_personas\PersonaInterface[] $personas */
-    return array_values(array_reduce($personas, function ($roles, $persona) {
-      $roles = array_merge($roles, $persona->getRoles());
-      return $roles;
-    }, []));
+    /** @var \Drupal\bt_personas\PersonaInterface[] $personas */
+    return array_values(
+          array_reduce(
+              $personas, function ($roles, $persona) {
+                  $roles = array_merge($roles, $persona->getRoles());
+                  return $roles;
+              }, []
+          )
+      );
   }
 
   /**
@@ -43,10 +49,12 @@ class PersonaUtility implements PersonaUtilityInterface {
    * @return string[]
    *   The list of persona IDs.
    */
-  public static function personaNames($personas) {
-    return array_map(function ($persona) {
-      return $persona->id();
-    }, $personas);
+  public static function personaNames(array $personas) {
+    return array_map(
+          function ($persona) {
+              return $persona->id();
+          }, $personas
+      );
   }
 
 }

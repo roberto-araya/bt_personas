@@ -4,6 +4,9 @@ namespace Drupal\bt_personas;
 
 use Drupal\user\UserInterface;
 
+/**
+ * Utility interface for Personas entity.
+ */
 interface PersonaUtilityInterface {
 
   /**
@@ -33,11 +36,10 @@ interface PersonaUtilityInterface {
    *
    * @param \Drupal\user\UserInterface $user
    *   The user with which to compare.
-   *
    * @param string $persona
    *   The id of the persona to check.
    *
-   * @return boolean
+   * @return bool
    *   Whether the given user has the specified persona.
    */
   public static function hasPersona(UserInterface $user, $persona);

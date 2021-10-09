@@ -28,7 +28,7 @@ class UserPersona extends ConditionPluginBase {
       '#type' => 'checkboxes',
       '#title' => $this->t('When the user has the following personas'),
       '#default_value' => $this->configuration['personas'],
-      '#options' => array_map('\Drupal\Component\Utility\Html::escape', personas_get_names()),
+      '#options' => array_map('\Drupal\Component\Utility\Html::escape', bt_personas_get_names()),
       '#description' => $this->t('If you select no personas, the condition will evaluate to TRUE for all users.'),
     ];
     return parent::buildConfigurationForm($form, $form_state);
@@ -56,7 +56,7 @@ class UserPersona extends ConditionPluginBase {
    */
   public function summary() {
     // Use the persona labels. They will be sanitized below.
-    $personas = array_intersect_key(personas_get_names(), $this->configuration['personas']);
+    $personas = array_intersect_key(bt_personas_get_names(), $this->configuration['personas']);
     if (count($personas) > 1) {
       $personas = implode(', ', $personas);
     }

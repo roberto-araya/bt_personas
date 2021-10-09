@@ -78,7 +78,7 @@ function bt_personas_form_user_form_alter(&$form, FormStateInterface $form_state
 
   $form['account']['roles']['#access'] = FALSE;
 
-  $form['#entity_builders'][] = 'personas_user_builder';
+  $form['#entity_builders'][] = 'bt_personas_user_builder';
 }
 
 /**

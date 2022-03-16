@@ -99,7 +99,7 @@ function bt_personas_persona_update(EntityInterface $persona) {
     return;
   }
 
-  $batch_processor = Drupal::getContainer()->get('personas.batch_processor');
+  $batch_processor = Drupal::getContainer()->get('bt_personas.batch_processor');
   $batch_processor->process($persona);
 }
 

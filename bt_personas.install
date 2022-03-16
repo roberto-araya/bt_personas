@@ -9,10 +9,10 @@
  * Implements hook_install().
  */
 function bt_personas_install() {
-  list(
+  [
     $entity_field_manager,
-    $field_storage_definition_listener
-  ) = _personas_get_install_dependencies();
+    $field_storage_definition_listener,
+  ] = _personas_get_install_dependencies();
 
   $definitions = $entity_field_manager->getFieldStorageDefinitions('user');
   $field_storage_definition_listener->onFieldStorageDefinitionCreate($definitions['personas']);
